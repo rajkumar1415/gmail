@@ -1,0 +1,52 @@
+#%RAML 1.0
+title: Yuva Raj
+traits:
+  -yuva : !include traits/trait.raml
+/subtraction:
+  get:
+    is:
+      -yuva
+    queryParameters:
+      number1:
+        type: integer
+        example: 10
+      number2:
+        type: integer
+        example: 5
+    responses:
+      200:
+        body:
+          application/json:
+            example:
+              {
+                "result" : "subtraction is 5"
+              }
+/multification:
+  get:
+    is:
+      -yuva
+    
+    queryParameters:
+     type: !include data r/dataType 1.raml
+    responses:
+          200:
+           body:
+             application/json:
+              example: !include raj/rajfile.json
+               
+         
+                 
+                                
+                          
+              
+          
+
+
+              
+        
+                        
+              
+
+
+          
+          

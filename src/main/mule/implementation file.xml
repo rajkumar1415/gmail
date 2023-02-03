@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+	<sub-flow name="implementation_fileSub_Flow" doc:id="75c17e71-d86a-4a90-8763-1a6b64796494" >
+		<set-variable value="#[attributes.queryparams.number1]" doc:name="Set Variable" doc:id="cd1c043f-382b-404b-8d66-f385b5de72ec" variableName="number1"/>
+		<set-variable value="#[attributes.queryparams.number2]" doc:name="Set Variable" doc:id="3a139673-51e8-4ece-9250-59c4016130df" variableName="number2"/>
+		<ee:transform doc:name="Transform Message" doc:id="757f5b8f-cd86-47e6-868b-2aac47ab14ea" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+{
+	"result": vars.number1 + vars.number2
+}]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+	</sub-flow>
+</mule>
